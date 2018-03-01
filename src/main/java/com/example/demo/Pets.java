@@ -15,7 +15,7 @@ public class Pets {
 
     private  long age;
 
-    @ManyToOne
+    @OneToOne
     private Child child;
 
     public Pets() {

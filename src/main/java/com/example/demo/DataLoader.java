@@ -15,15 +15,13 @@ public class DataLoader  implements CommandLineRunner{
 
     @Override
     public void run(String... args) throws Exception {
-        /*One child can have many pets now */
+        /*Sadness. a child can only have one pet. */
+
+
 
         Child newChild = new Child();
         newChild.setName("Jim");
-        newChild.addPetToChild(petRepo.findByName("Snuffy"));
-        newChild.addPetToChild(petRepo.findByName("Tammy"));
         childRepo.save(newChild);
-
-
 
         Pets myPet = new Pets();
         myPet.setAge(3);
@@ -32,17 +30,8 @@ public class DataLoader  implements CommandLineRunner{
         petRepo.save(myPet);
 
 
-        myPet = new Pets();
-        myPet.setAge(1);
-        myPet.setName("Tammy");
-        myPet.setChild(newChild);
-        petRepo.save(myPet);
-
-
-
         newChild = new Child();
         newChild.setName("Sarah");
-        newChild.addPetToChild(petRepo.findByName("Fluffy"));
         childRepo.save(newChild);
 
         myPet = new Pets();
@@ -50,6 +39,8 @@ public class DataLoader  implements CommandLineRunner{
         myPet.setName("Fluffy");
         myPet.setChild(newChild);
         petRepo.save(myPet);
+
+
 
     }
 }

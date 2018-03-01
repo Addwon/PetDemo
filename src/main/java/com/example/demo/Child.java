@@ -15,11 +15,11 @@ public class Child {
 
     private String dob;
 
-    @OneToMany(mappedBy = "child")
-    private  Set<Pets> myPets;
+    @OneToOne(mappedBy = "child")
+    private Pets myPets;
 
     public Child() {
-        myPets = new HashSet<>();
+
     }
 
     public long getId() {
@@ -46,16 +46,11 @@ public class Child {
         this.dob = dob;
     }
 
-    public Set<Pets> getMyPets() {
+    public Pets getMyPets() {
         return myPets;
     }
 
-    public void setMyPets(Set<Pets> myPets) {
+    public void setMyPets(Pets myPets) {
         this.myPets = myPets;
-    }
-
-    public void addPetToChild(Pets pet)
-    {
-        this.myPets.add(pet);
     }
 }
