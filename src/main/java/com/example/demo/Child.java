@@ -15,7 +15,7 @@ public class Child {
 
     private String dob;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     private  Set<Pets> myPets;
 
     public Child() {
