@@ -15,11 +15,11 @@ public class Pets {
 
     private  long age;
 
-    @ManyToMany(mappedBy = "myPets")
-    private Set<Child> children;
+    @ManyToOne
+    private Child child;
 
     public Pets() {
-        children = new HashSet<>();
+
     }
 
     public String getName() {
@@ -46,17 +46,11 @@ public class Pets {
         this.id = id;
     }
 
-    public Set<Child> getChildren() {
-        return children;
+    public Child getChild() {
+        return child;
     }
 
-    public void setChildren(Set<Child> children) {
-        this.children = children;
-    }
-
-    public void addChildToPet(Child aChild)
-    {
-        this.children.add(aChild);
-
+    public void setChild(Child child) {
+        this.child = child;
     }
 }

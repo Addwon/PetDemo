@@ -15,7 +15,7 @@ public class Child {
 
     private String dob;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "child")
     private  Set<Pets> myPets;
 
     public Child() {

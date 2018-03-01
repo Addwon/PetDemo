@@ -15,27 +15,41 @@ public class DataLoader  implements CommandLineRunner{
 
     @Override
     public void run(String... args) throws Exception {
-  /*      Children go crazy - they can have as many pets as they want!!!
-
-        Create a new pet and add a child. Perform the operations separately.
-        CASCADE.ALL has been removed
-
-*/      Pets myPet = new Pets();
-        myPet.setAge(3);
-        myPet.setName("Snuffy");
-        petRepo.save(myPet);
-
-
-        myPet = new Pets();
-        myPet.setAge(1);
-        myPet.setName("Tammy");
-        petRepo.save(myPet);
+        /*One child can have many pets now */
 
         Child newChild = new Child();
         newChild.setName("Jim");
         newChild.addPetToChild(petRepo.findByName("Snuffy"));
         newChild.addPetToChild(petRepo.findByName("Tammy"));
         childRepo.save(newChild);
+
+
+
+        Pets myPet = new Pets();
+        myPet.setAge(3);
+        myPet.setName("Snuffy");
+        myPet.setChild(newChild);
+        petRepo.save(myPet);
+
+
+        myPet = new Pets();
+        myPet.setAge(1);
+        myPet.setName("Tammy");
+        myPet.setChild(newChild);
+        petRepo.save(myPet);
+
+
+
+        newChild = new Child();
+        newChild.setName("Sarah");
+        newChild.addPetToChild(petRepo.findByName("Fluffy"));
+        childRepo.save(newChild);
+
+        myPet = new Pets();
+        myPet.setAge(1);
+        myPet.setName("Fluffy");
+        myPet.setChild(newChild);
+        petRepo.save(myPet);
 
     }
 }
